@@ -3,12 +3,6 @@
 ```
 <?php
 
- /**
- * verifyCaptcha : This function verifies the validity of Captcha Images
- * @input : The User's Answer to the Captcha
- * @return : 407 (captcha expired), 200 (captcha verified), 400 (captcha unverified), 500 (Server Error)
- **/
-
 //Call the function
 verifyCaptcha($_POST['user_answer']);
 
