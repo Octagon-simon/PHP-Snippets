@@ -1,9 +1,13 @@
 <style>
-        * {
+    *{
             margin: 0px;
             box-sizing:border-box;
             padding:0px;
-        }
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    body{
+    font-family: 'Roboto', sans-serif;
+    }
     button#btn_captcha_submit{
     color: #fff;
     border-radius: 5px;
@@ -22,11 +26,11 @@
     border: 2px solid #e91e63;
     background-color: transparent;
     box-shadow: 0px 0px 8px #e91e63;
-    border-radius: 50%;
-    width: auto;
+    border-radius: 5px;
     font-weight: 600;
     cursor:pointer;
     box-sizing:border-box;
+    width: 20%;
 }
     div#captcha_img_house{
         text-align:center;
@@ -37,9 +41,16 @@
     padding: 5px;
     }
     div#captcha_house{
-    padding:10px;
-    max-width:500px;
-    box-shadow: 0px 0px 8px #919191;
+    padding: 10px;
+    max-width: 500px;
+    box-shadow: 0px 0px 8px #c9c9c9;
+    position: absolute;
+    left: 50%;
+    top: 0%;
+    transform: translate(-50%, 50%);
+    }
+    div#captcha_input_form_group{
+    display:flex;
     }
     label#captcha_form_label{
     display: block;
@@ -47,14 +58,16 @@
     font-size: 15px;
     }
     input#captcha_key{
-    background-color: #e6e6e6;
+    background-color: #f2f2f2;
     height: 2.5rem;
-    border: 2px solid #9d9d9d;
+    border: 2px solid #dbdbdb;
     border-radius: 10px;
     box-sizing:border-box;
     caret-color: #e91e63;
     font-size: 15px;
     padding:5px;
+    width: 80%;
+    margin-right: 10px;
     }
     input#captcha_key:focus{
     border: 2px solid #e91e63 !important;    

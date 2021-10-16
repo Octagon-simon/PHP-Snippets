@@ -37,7 +37,9 @@ createNotif("captcha-notif", "is-danger", "'.$v['captcha_message'].'", "", false
 <form method="post">
     <div id="captcha_form_group">
         <label id="captcha_form_label">Enter Text</label>
-    <input id="captcha_key" name="key"> <button id="btn_captcha_refresh" type="button">&#8635;</button>    
+    <div id="captcha_input_form_group"> 
+    <input id="captcha_key" name="key"> <button id="btn_captcha_refresh" type="button">&#8635;</button>  
+    </div>
     </div>
     <div id="captcha_form_group">
     <button id="btn_captcha_submit" type="submit" name="submit">Verify</button>
