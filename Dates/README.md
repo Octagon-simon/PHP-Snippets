@@ -39,6 +39,7 @@ var_dump($checkDate);
 ```
 
 - Using **TimeStamps**
+
 The function has been made to also accept TimeStamps as the parameter for date.
 Just make sure you're providing a correct TimeStamp to prevent **Invalid Date Error!**
 
