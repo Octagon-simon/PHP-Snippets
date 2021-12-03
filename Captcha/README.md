@@ -1,10 +1,7 @@
-### About verifyCaptcha() Function
+### Captcha Verification Status Codes
 
 ```
 <?php
-
-//Call the function
-verifyCaptcha($_POST['user_answer']);
 
 //Output 1
 $return = [
@@ -44,8 +41,10 @@ $return = [
 
 //Captcha verification script
 require_once 'core/captcha_verify.php'; 
+
 //Captcha custom JS
 include_once 'assets/captcha_script.php'; 
+
 //Captcha custom CSS
 include_once 'assets/captcha_style.php';
 
@@ -57,20 +56,27 @@ include_once 'assets/captcha_style.php';
 
 ```
 <html>
-<head></head>
-<body>
-<img id="captcha_img" src="core/captcha_image.php">   
+    
+    <div class="captcha-container">
+        <div class="captcha">
+            <div class="notification-wrapper"></div>
 
-<form method="post">
-    <div id="captcha_form_group">
-        <label id="captcha_form_label">Enter Text</label>
-        <input id="captcha_key" name="key"> <button id="btn_captcha_refresh" type="button">&#8635;</button>    
+            <div id="captcha_img_house" style="text-align:center;margin-bottom:10px"> <!-- 5 -->
+                <img id="captcha_img" src="core/captcha_image.php">   
+            </div>
+
+            <form method="post">
+                <div class="captcha_form_group">
+                    <label id="captcha_form_label">Enter Text</label>
+                    <div class="captcha_input_group"> 
+                        <input id="captcha_inp" name="captcha"> <button title="Click to refresh image" id="btn_captcha_refresh" type="button">&#8635;</button>  
+                    </div>
+                </div>
+                <button title="Click to Verify captcha" id="btn_captcha_submit" type="submit" name="submit">Verify</button>
+            </form>
+        </div>
     </div>
-    <div id="captcha_form_group">
-        <button id="btn_captcha_submit" type="submit" name="submit">Verify</button>
-    </div>
-</form>
-</body>
+  
 </html>
 ```
 - Now we need to Call the function using ***json_decode*** to decode the output
@@ -79,9 +85,15 @@ include_once 'assets/captcha_style.php';
 <?php
 
 if(isset($_POST)&& isset($_POST['submit'])){
-    $myCaptcha = json_decode(verifyCaptcha($_POST['key']), true);
-    print_r($myCaptcha);
+    $verify_captcha = json_decode(verifyCaptcha($_POST['key']), true);
+
+    if($verify_captcha['captcha_status'] == 200){
+      echo "Captcha verified successfully";
+    }else{
+      echo "Captcha verification failed!";
+    }
 }
+
 ?>
 
 ```
@@ -93,47 +105,17 @@ if(isset($_POST)&& isset($_POST['submit'])){
 
 ### WHAT YOU CAN DO
 - You can change the length of the Text to include in the Image.
-  - On line 18 of core/captcha_image.php 
 
-```
-<?php
-//Specify the length of the string here
-$captcha_txt = generateRandomString(5);
-?>
-
-```
-- You can change the background color of the images. The background colors specified are randomly selected
-  - On line 29 of core/captcha_image.php
-
-```
-<?php
-//create a color hex 
-$a=array(
-"red"=>[255, 0, 0],
-"green"=>[0, 155, 6],
-"blue"=>[0, 0, 255],
-"black"=>[0,0,0]
-);
-?>
-
-```
+- You can add more background colors to be randomly selected
 
 - You can change the expiry time of all Captcha Challenges
-  - On line 45 of core/captcha_image.php
-
-```
-<?php
-//You can make it last for 2 minutes or 1 minute
-$expire = gmdate(strtotime('+3 minutes', time()));
-?>
-
-```
+ 
 ### ABOUT THE FILES
 - core/captcha_image.php
   - This file will create the Captcha Image and set the required session variables
 
 - core/captcha_verify.php
-  - This file will verify an already existing captcha matching the User's answer with Captcha's token found in $_SESSION
+  - This file will verify the captcha
 
 - assets/captcha_style.php
   - This file contains the default/custom styling for the demo.php page
@@ -143,3 +125,9 @@ $expire = gmdate(strtotime('+3 minutes', time()));
 
 - demo.php
   - Run this file to view how the Captcha script works
+
+### Need More Clarification?
+
+- Visit my blog here at [Hashnode](https://octagon.hashnode.dev/create-a-simple-image-captcha-using-php) or [Medium](https://simon-ugorji.medium.com/create-a-simple-captcha-using-php-f787ac77e8b6) or [TealFeed](https://tealfeed.com/create-simple-image-captcha-using-php-62phr)
+
+Thank You!

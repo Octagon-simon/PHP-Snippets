@@ -27,13 +27,13 @@ if(isset($_POST)&& isset($_POST['submit'])){
 }
 ?>
 <html>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <div class="captcha-container">
         <div class="captcha">
             <div class="notification-wrapper"></div>
 
-            <div id="captcha_img_house" style="text-align:center;margin-bottom:10px"> <!-- 5 -->
-                <img id="captcha_img" src="1.php">   
+            <div id="captcha_img_house"> 
+                <img id="captcha_img" src="core/captcha_image.php">   
             </div>
 
             <form method="post">

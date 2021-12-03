@@ -27,6 +27,10 @@
   .captcha{
   align-self: center;
   }
+  #captcha_img_house{
+    text-align:center;
+    margin-bottom:10px;
+  }
   div.captcha_form_group{
     margin-bottom:10px;
   }
