@@ -2,14 +2,11 @@
 session_start();
 
 function generateRandomString($length = 10) {
-    //$numbers = '0123456789';
     $characters = 'a0bcde1fghi2jklm3nopq4rstu5vwx6yzA7BCDE8FGHIJ9KLMN3OPQRS2TUVW1XYZ0';
     $charactersLength = strlen($characters);
-    //$numLength = strlen($numbers);
 
     $randomString = '';
     for ($i = 0; $i < $length; $i++) {
-        //$randomString .= $numbers[rand(0, $numLength - 1)];
         $randomString .= $characters[rand(0, $charactersLength - 1)];
     }
     return $randomString;
